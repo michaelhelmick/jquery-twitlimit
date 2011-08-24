@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+	<title>Character Limit</title>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/twitlimit-0.2.0.compressed.js"></script>
+	
+	<script type="text/javascript"> 
+	$(document).ready(function(){
+		$('#limitThis').twitLimit({});
+		
+		$('#limitThis2').twitLimit({
+			message: 'You have %1 Characters left!',
+			counterElem: '#limit2',
+			allowNegative: true
+		});
+		
+		$('#limitThis3').twitLimit({
+			counterElem: '#limit3',
+			allowNegative: true,
+			dangerMode: false,
+			onNegative: function(){ $('#submit-button').attr('disabled', 'disabled'); },
+			onPositive: function(){ $('#submit-button').removeAttr('disabled'); }
+		});
+		
+		$('#limitThis4').twitLimit({
+			counterElem: '#limit4',
+			dangerBold: false,
+			dangerColors: {
+				dark: '5b04dd',
+				medium: '3d0fe9',
+				bright: '374aff'
+			}
+		});
+	});
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="/styles/structure.css" />
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-17462978-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</head> 
+ 
+<body style="width: 450px;">
+<h2>Demo running TwitLimit 0.2.0</h2>
+
+<p><a href="http://blog.michaelhelmick.com/2010/07/15/twitlimit-jquery-character-limiter/" target="_blank">Documentation</a><br />
+<a href="twitlimit-0.2.0.zip">Download</a></p>
+
+<h4>Demo 1:</h4>
+<span class="description">This example is using all default options of TwitLimit.</span>
+<div class="code">
+	<p>
+	$(document).ready(function(){<br />
+	<span class="tab">$('#limitThis').twitLimit({});</span>
+	});
+	</p>
+</div>
+<div id="limit"></div>
+<textarea id="limitThis"></textarea>
+
+<hr />
+
+<h4>Demo 2:</h4>
+<span class="description">This example modifies the "message" option (%1 is used because it is replaced by the number characters left) and the "counterElem" which is where the message is displayed.</span>
+<div class="code">
+	<p>
+	$(document).ready(function(){<br />
+	<span class="tab">$('#limitThis2').twitLimit({<br />
+		<span class="tab"><b>message:</b> 'You have %1 Characters left!',</span>
+		<span class="tab"><b>counterElem:</b> '#limit2',</span>
+		<span class="tab"><b>allowNegative:</b> true</span>
+	});</span>
+	});
+	</p>
+</div>
+<div id="limit2"></div>
+<textarea id="limitThis2"></textarea>
+
+<hr />
+
+<h4>Demo 3:</h4>
+<span class="description">This example disables "dangerMode", so the number of characters left won't go from dark to medium to bright red. It also adds listeners for when the count goes negative (it disables the submit button) and when it returns positive (it enables the submit button).</span>
+<div class="code">
+	<p>
+	$(document).ready(function(){<br />
+	<span class="tab">$('#limitThis3').twitLimit({<br />
+		<span class="tab"><b>counterElem:</b> '#limit3',</span>
+		<span class="tab"><b>allowNegative:</b> true,</span>
+		<span class="tab"><b>dangerMode:</b> false,</span>
+		<span class="tab"><b>onNegative:</b> function(){ $('#submit-button').attr('disabled', 'disabled'); },</span>
+		<span class="tab"><b>onPositive:</b> function(){ $('#submit-button').removeAttr('disabled'); }</span>
+		
+	});</span>
+	});
+	</p>
+</div>
+<div id="limit3"></div>
+<textarea id="limitThis3"></textarea>
+<input type="submit" id="submit-button" value="Submit Post"/ >
+
+<hr />
+
+<h4>Demo 4:</h4>
+<span class="description">This demo changes the colors of the count changes and does not change the count bold (when 20 characters or less left) when dangerMode is enabled.</span>
+<div class="code">
+	<p>
+	$(document).ready(function(){<br />
+	<span class="tab">$('#limitThis4').twitLimit({<br />
+		<span class="tab"><b>counterElem:</b> '#limit4',</span>
+		<span class="tab"><b>dangerBold:</b> false,</span>
+		<span class="tab"><b>dangerColors:</b> {
+			<span class="tab"><b>dark</b>: '5b04dd'</span>
+			<span class="tab"><b>medium</b>: '3d0fe9'</span>
+			<span class="tab"><b>bright</b>: '374aff'</span>
+		</span>
+		<span class="tab">}</span>
+	});</span>
+	});
+	</p>
+</div>
+<div id="limit4"></div>
+<textarea id="limitThis4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu enim lectus. Quisque ac sapien dui. Donec scelerisque.</textarea>
+
+
+<div id="footer">
+	<p><b><em>Copyright 2010 - Michael Helmick</em></b></p>
+	<p><b>Contact <a href="mailto:code@michaelhelmick.com">code@michaelhelmick.com</a></b>
+		<br /><em>Please only contact with ideas or issues with the code. Do not use this email for help with TwitLimit.</em></p>
+</div>
+</body>
+</html>
